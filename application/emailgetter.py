@@ -2,7 +2,7 @@ from imap_reader import ImapClient
 import json
 
 def getLogin():
-    with open("auth.json", "a+", encoding="utf-8") as f:
+    with open("application/auth.json", "a+", encoding="utf-8") as f:
         f.seek(0)
         content = f.read().strip()
 
