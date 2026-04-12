@@ -23,13 +23,19 @@ def init():
     global auth
     auth = getLogin()
 
-def getLatestEmailBody():
+def getLatestEmail():
     with ImapClient(
             email_address=auth["email"],
             password_email=auth["password"],
         ) as client:
         msg = client.get_latest_message("UNSEEN")
         if msg:
-            return (True, msg.body_text)
+            return msg
         else:
-            return (False, None)
+            return None
+        
+def getLatestOTP():
+    return getLatestEmail().otp_codes
+
+def getLatestLink():
+    return getLatestEmail().verification_links

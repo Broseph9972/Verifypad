@@ -2,8 +2,8 @@ import emailgetter
 
 emailgetter.init()
 
-success, email = emailgetter.getLatestEmailBody()
-if success:
-    print(email)
+otp = emailgetter.getLatestOTP()
+if otp:
+    print(otp)
 else:
     print("a stinky error happened")
