@@ -1,0 +1,21 @@
+import json
+from pathlib import Path
+
+auth_file = Path(__file__).parent / "config.json"
+
+def checkForConfig():
+    with open(auth_file, "r", encoding="utf-8") as f:
+        config = json.load(f)
+        if "email" in config and "password" in config and "port" in config:
+            return True
+    return False
+
+def setConfig():
+    with open(auth_file, "w", encoding="utf-8") as f:
+        config = {
+            "email": input("Email to use for IMAP: "),
+            "password": input("Password to use for IMAP: "),
+            "port": input("Serial Comunication Port to use: ")
+        }
+        json.dump(config, f, indent=2)
+        return config
