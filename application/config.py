@@ -4,11 +4,19 @@ from pathlib import Path
 auth_file = Path(__file__).parent / "config.json"
 
 def checkForConfig():
+    try:
+        with open(auth_file, "r", encoding="utf-8") as f:
+            config = json.load(f)
+            if "email" in config and "password" in config and "port" in config:
+                return True
+            else:  
+                return False
+    except:
+        return False
+    
+def getConfig():
     with open(auth_file, "r", encoding="utf-8") as f:
-        config = json.load(f)
-        if "email" in config and "password" in config and "port" in config:
-            return True
-    return False
+        return json.load(f)
 
 def setConfig():
     with open(auth_file, "w", encoding="utf-8") as f:
