@@ -642,7 +642,7 @@
       {
         "filename": "Verifypad.kicad_sch",
         "name": "Verifypad",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "3f642925-8554-4fb7-98e6-406fb6b6d566"
       }
     ],
     "used_designators": "",
@@ -651,7 +651,7 @@
   "sheets": [
     [
       "3f642925-8554-4fb7-98e6-406fb6b6d566",
-      "Root"
+      "Verifypad"
     ]
   ],
   "text_variables": {},
