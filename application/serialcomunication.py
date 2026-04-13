@@ -4,10 +4,11 @@ import threading
 
 conn = None
 messageHandler = None
+closeHandler = None
 shouldLog = False
 
-def init(port, onMessage, log=True):
-    global conn, messageHandler, shouldLog
+def init(port, onMessage, onClose, log=True):
+    global conn, messageHandler, shouldLog, closeHandler
     if conn and conn.is_open:
         return False
     try:
@@ -16,6 +17,7 @@ def init(port, onMessage, log=True):
         print(f"Error: {e}")
         return False
     messageHandler = onMessage
+    closeHandler = onClose
     shouldLog=log
     threading.Thread(target=start_monitoring, daemon=True).start()
     return True
@@ -26,7 +28,7 @@ def start_monitoring():
         if conn and conn.is_open:
             try:
                 if conn.in_waiting > 0:
-                    data = conn.read(conn.in_waiting)
+                    data = conn.read(conn.in_waiting).decode("utf-8")
                     messageHandler(data)
                     if shouldLog:
                         print(f"Received: {data}")
@@ -34,6 +36,7 @@ def start_monitoring():
                 print(f"Error: {e}")
                 break
         else:
+            closeHandler()
             break
         time.sleep(0.1)
 
