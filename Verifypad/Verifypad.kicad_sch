@@ -5,6 +5,206 @@
 	(uuid "3f642925-8554-4fb7-98e6-406fb6b6d566")
 	(paper "A4")
 	(lib_symbols
+		(symbol "Connector_Generic:Conn_01x04"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x04"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_01x04_1_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 1.27 -6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Switch:SW_Push"
 			(pin_numbers
 				(hide yes)
@@ -588,24 +788,16 @@
 		(uuid "262458f1-6713-4449-b2e6-121e35a4b542")
 	)
 	(no_connect
-		(at 33.02 69.85)
-		(uuid "2c4ba1e3-731b-4143-89ff-0859cccff8b3")
-	)
-	(no_connect
-		(at 73.66 57.15)
-		(uuid "6125e5e0-ab8e-4679-b56a-49a7c81f406c")
-	)
-	(no_connect
 		(at 73.66 72.39)
 		(uuid "65ee63f9-30cf-4bff-8f50-30919057ce57")
 	)
 	(no_connect
-		(at 73.66 64.77)
-		(uuid "8ed9aca3-afea-4b25-9b8c-b9037c21ebf4")
+		(at 73.66 62.23)
+		(uuid "6d12193f-141c-4cc7-83a4-9da4a31388c3")
 	)
 	(no_connect
-		(at 33.02 72.39)
-		(uuid "a55f63a5-840b-4491-975b-84e5496197da")
+		(at 73.66 64.77)
+		(uuid "8ed9aca3-afea-4b25-9b8c-b9037c21ebf4")
 	)
 	(no_connect
 		(at 33.02 67.31)
@@ -619,10 +811,6 @@
 		(at 33.02 64.77)
 		(uuid "cd696665-3b77-4afb-8019-85909980170d")
 	)
-	(no_connect
-		(at 73.66 62.23)
-		(uuid "dcede2bb-2700-4687-8e18-d4b10f577d05")
-	)
 	(wire
 		(pts
 			(xy 104.14 67.31) (xy 104.14 72.39)
@@ -632,6 +820,16 @@
 			(type default)
 		)
 		(uuid "2d65e352-4045-4d82-b523-3b00e4f438ad")
+	)
+	(wire
+		(pts
+			(xy 63.5 90.17) (xy 55.88 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52e48d0b-d52b-4238-a123-a6ed77cd26ed")
 	)
 	(wire
 		(pts
@@ -692,6 +890,66 @@
 			(type default)
 		)
 		(uuid "cef048ea-9d4e-4187-b61d-045bb3e35bfa")
+	)
+	(label "I2CC"
+		(at 33.02 72.39 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "166269f0-cadc-4162-85d0-e06234e98c16")
+	)
+	(label "I2CD"
+		(at 55.88 92.71 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1a8c1734-622b-4720-8086-fe9cb01dc48f")
+	)
+	(label "I2CD"
+		(at 33.02 69.85 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1d8a07fe-a015-4105-9f12-99d0d23d2c42")
+	)
+	(label "I2CC"
+		(at 55.88 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4f785a52-d158-41a7-b879-da5952af1de4")
+	)
+	(label "VCC"
+		(at 73.66 57.15 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "90bdb3ec-f523-479d-8f70-598433caa498")
+	)
+	(label "VCC"
+		(at 55.88 87.63 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9dd4e49a-ca44-4fd0-9ba2-60bf6bd0a4b4")
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
@@ -828,6 +1086,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 63.5 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "48ceefed-5183-40ba-adeb-c94ff21b2283")
+		(property "Reference" "#PWR03"
+			(at 63.5 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 63.5 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 63.5 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 63.5 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 63.5 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1d912ef6-e5d2-4c7d-8180-ea15785abf34")
+		)
+		(instances
+			(project ""
+				(path "/3f642925-8554-4fb7-98e6-406fb6b6d566"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Switch:SW_Push")
 		(at 99.06 67.31 0)
 		(unit 1)
@@ -956,6 +1280,80 @@
 			(project ""
 				(path "/3f642925-8554-4fb7-98e6-406fb6b6d566"
 					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 50.8 92.71 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "99d83d61-a86d-44d0-82dc-b341b8f30ff0")
+		(property "Reference" "J1"
+			(at 50.8 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x04"
+			(at 50.8 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+			(at 50.8 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 50.8 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "0d2e6009-dc9f-4975-aecf-db0b099c1d50")
+		)
+		(pin "4"
+			(uuid "823e52f9-f993-411f-89d7-eec1ede5dbb1")
+		)
+		(pin "1"
+			(uuid "640c6498-3200-48d5-a717-19921e0a866f")
+		)
+		(pin "2"
+			(uuid "30d06f5d-0d41-418b-8dc3-7f4cf52d79ac")
+		)
+		(instances
+			(project ""
+				(path "/3f642925-8554-4fb7-98e6-406fb6b6d566"
+					(reference "J1")
 					(unit 1)
 				)
 			)
