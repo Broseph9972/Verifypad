@@ -41,5 +41,9 @@ elif test == "paste":
     time.sleep(3)
     pasteText("yay it works :D")
 
+elif test == "config":
+    import config
+    print("Config File Check: " + config.checkForConfig)
+    print("New config:\n" + config.setConfig())
 else:
     print("No such test found")
