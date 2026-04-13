@@ -8,16 +8,21 @@ serialOpen = False
 configDict = {}
 
 def messageHandler(msg):
+    msg = msg.strip()
     if msg == "paste-otp":
         retry = 0
         while True:
             retry = retry + 1
             if retry > 5:
+                serialcomunication.sendMessage("otp-paste-failed")
                 break;
             codes = emailgetter.getLatestOTP()
             if codes:
-                paste.pasteText(codes[0])
-                serialcomunication.sendMessage("pasted-otp")
+                try:
+                    paste.pasteText(codes[0])
+                    serialcomunication.sendMessage("pasted-otp")
+                except Exception:
+                    serialcomunication.sendMessage("otp-paste-failed")
                 break;
             time.sleep(3)
     elif msg == "paste-link":
@@ -25,11 +30,15 @@ def messageHandler(msg):
         while True:
             retry = retry + 1
             if retry > 4:
+                serialcomunication.sendMessage("link-paste-failed")
                 break;
             links = emailgetter.getLatestLink()
             if links:
-                paste.pasteText(links[0])
-                serialcomunication.sendMessage("pasted-link")
+                try:
+                    paste.pasteText(links[0])
+                    serialcomunication.sendMessage("pasted-link")
+                except Exception:
+                    serialcomunication.sendMessage("link-paste-failed")
                 break;
             time.sleep(3)
 
