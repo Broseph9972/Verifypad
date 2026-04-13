@@ -13,7 +13,7 @@ def checkForConfig():
                 return False
     except:
         return False
-    
+
 def getConfig():
     with open(auth_file, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -21,9 +21,16 @@ def getConfig():
 def setConfig():
     with open(auth_file, "w", encoding="utf-8") as f:
         config = {
-            "email": input("Email to use for IMAP: "),
-            "password": input("Password to use for IMAP: "),
-            "port": input("Serial Comunication Port to use: ")
+            "email": input(f"Email to use for IMAP: "),
+            "password": input(f"Password to use for IMAP: "),
+            "port": input(f"Serial Comunication Port to use: ")
         }
+        json.dump(config, f, indent=2)
+        return config
+    
+def setPort(port):
+    config = getConfig()
+    config["port"] = port
+    with open(auth_file, "w", encoding="utf-8") as f:
         json.dump(config, f, indent=2)
         return config

@@ -7,6 +7,12 @@ messageHandler = None
 closeHandler = None
 shouldLog = False
 
+def _notify_close():
+    global conn
+    conn = None
+    if closeHandler:
+        closeHandler()
+
 def init(port, onMessage, onClose, log=True):
     global conn, messageHandler, shouldLog, closeHandler
     if conn and conn.is_open:
@@ -29,15 +35,16 @@ def start_monitoring():
             try:
                 if conn.in_waiting > 0:
                     data = conn.read(conn.in_waiting).decode("utf-8")
-                    messageHandler(data)
                     if shouldLog:
                         print(f"Received: {data}")
+                    messageHandler(data)
             except Exception as e:
                 print(f"Error: {e}")
-                break
+                _notify_close()
+                return
         else:
-            closeHandler()
-            break
+            _notify_close()
+            return
         time.sleep(0.1)
 
 def sendMessage(msg):
@@ -52,6 +59,7 @@ def closeConnection():
     if conn and conn.is_open:
         try:
             conn.close()
+            _notify_close()
             return True
         except Exception as e:
             print(f"Error: {e}")
