@@ -1,3 +1,13 @@
+"""
+test list:
+
+otp
+link
+paste
+config
+
+"""
+
 import sys
 
 blue = "\033[34m"
@@ -43,7 +53,11 @@ elif test == "paste":
 
 elif test == "config":
     import config
-    print("Config File Check: " + config.checkForConfig)
-    print("New config:\n" + config.setConfig())
+    configExists = config.checkForConfig()
+    print("Config File Check: " + str(configExists))
+    if configExists:
+        print("Current Config File: " + str(config.getConfig()))
+    if input("Write new config? (y/n) ") == "y":
+        print("New config:\n" + str(config.setConfig()))
 else:
     print("No such test found")
