@@ -1,8 +1,11 @@
 from imap_reader import ImapClient
 import json
+from pathlib import Path
+
+auth_file = Path(__file__).parent / "auth.json"
 
 def getLogin():
-    with open("application/auth.json", "a+", encoding="utf-8") as f:
+    with open(auth_file, "a+", encoding="utf-8") as f:
         f.seek(0)
         content = f.read().strip()
 
@@ -34,8 +37,12 @@ def getLatestEmail():
         else:
             return None
         
-def getLatestOTP():
-    return getLatestEmail().otp_codes
+def getLatestLink():
+    email = getLatestEmail()
+    if email:
+        return email.otp_codes
 
 def getLatestLink():
-    return getLatestEmail().verification_links
+    email = getLatestEmail()
+    if email:
+        return email.verification_links
