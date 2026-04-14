@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>VerifyPad</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="./main.css" />
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+	<main>
+		<section class="hero" aria-label="VerifyPad intro">
+			<div class="hero-photo"></div>
+			<div class="hero-overlay"></div>
+			<div class="content">
+				<h1>VerifyPad</h1>
+				<p class="subtitle">by joe and brad</p>
+				<p class="caption">We're really proud of that name</p>
+			</div>
+		</section>
+
+		<section class="showcase" aria-label="3d showcase">
+			<div id="dot-grid-root" class="dot-grid-host" aria-hidden="true"></div>
+			<div class="showcase-inner">
+				<article class="info info-left">
+					<h2>What It Is</h2>
+					<p>
+						A macropad that talks to a desktop app over serial so one button can fetch and paste verification data.
+					</p>
+				</article>
+
+				<div class="render-wrap">
+					<model-viewer
+						src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+						alt="Temporary 3D model placeholder"
+						camera-controls
+						auto-rotate
+						shadow-intensity="1"
+						exposure="0.95"
+						interaction-prompt="auto"
+					></model-viewer>
+				</div>
+
+				<article class="info info-right">
+					<h2>How It Works</h2>
+					<p>
+						Buttons send UTF-8 commands like paste-otp and paste-link; the app replies with pasted/failure statuses after email checks.
+					</p>
+				</article>
+			</div>
+		</section>
+	</main>
+
+	<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+	<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+	<script src="https://unpkg.com/gsap@3/dist/InertiaPlugin.min.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script type="text/babel" data-presets="react" src="./index.js"></script>
+</body>
+</html>
