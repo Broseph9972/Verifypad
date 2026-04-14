@@ -1,5 +1,0 @@
-(fp_lib_table
-  (version 7)
-  (lib (name "New_XIAO_Series_Footprints")(type "KiCad")(uri "C:/Users/brose/Downloads/New_XIAO_Series_Footprints")(options "")(descr ""))
-  (lib (name "Verifypad")(type "KiCad")(uri "C:/Users/brose/OneDrive/Documents/KiCad/VerifyPad/Verifypad")(options "")(descr ""))
-)
