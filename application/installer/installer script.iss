@@ -3,15 +3,18 @@
 ; Non-commercial use only
 
 #define MyAppName "VerifyPad"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "Joe and Brad inc."
 #define MyAppURL "https://github.com/Broseph9972/Verifypad"
-#define MyAppExeName "main.exe"
+#define MyAppExeName "verifypad.exe"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".myp"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
+#include "environment.iss"
+
 [Setup]
+ChangesEnvironment=true
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{DA25E8D1-EDA6-4A56-9FBA-45734250B2DA}
@@ -38,7 +41,7 @@ LicenseFile=C:\Users\Bradley\Coding\Verifypad\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputBaseFilename=installer
+OutputBaseFilename=verifypad-{#MyAppVersion}-installer
 SetupIconFile=C:\Users\Bradley\Coding\Verifypad\application\icon.ico
 SolidCompression=yes
 WizardStyle=modern
@@ -48,9 +51,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "envPath"; Description: "Add to PATH variable" 
 
 [Files]
-Source: "C:\Users\Bradley\Coding\Verifypad\application\dist\main\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\Bradley\Coding\Verifypad\application\dist\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
@@ -64,5 +68,25 @@ Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\main\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "powershell.exe"; \
+    Parameters: "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""$action = New-ScheduledTaskAction -Execute '{app}\main\verifypad.exe'; $trigger = New-ScheduledTaskTrigger -AtLogOn; $settings = New-ScheduledTaskSettingsSet -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1); Register-ScheduledTask -TaskName 'VerifyPad' -Action $action -Trigger $trigger -Settings $settings -Force"""; \
+    Flags: runhidden
 
+[UninstallRun]
+Filename: "powershell.exe"; \
+    Parameters: "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""Unregister-ScheduledTask -TaskName 'VerifyPad' -Confirm:$false -ErrorAction SilentlyContinue"""; \
+    RunOnceId: "DeleteVerifyPadScheduledTask"; Flags: runhidden
+
+[Code]
+procedure CurStepChanged(CurStep: TSetupStep);
+begin
+    if (CurStep = ssPostInstall) and IsTaskSelected('envPath')
+    then EnvAddPath(ExpandConstant('{app}') + '\main\verifypad.exe');
+end;
+
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+begin
+    if CurUninstallStep = usPostUninstall
+    then EnvRemovePath(ExpandConstant('{app}') + '\main\verifypad.exe');
+end;
