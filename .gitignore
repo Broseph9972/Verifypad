@@ -1,2 +1,3 @@
 application/config.json
 application/__pycache__/
+application/venv/
