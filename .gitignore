@@ -3,3 +3,4 @@ application/__pycache__/
 application/venv/
 application/build/
 application/dist/
+application/main.spec
