@@ -1,3 +1,4 @@
 pyautogui
 pyserial
 imap-reader
+pathlib

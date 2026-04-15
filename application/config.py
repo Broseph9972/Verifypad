@@ -1,7 +1,14 @@
 import json
+import os
 from pathlib import Path
 
-auth_file = Path(__file__).parent / "config.json"
+if os.name == 'nt':
+    app_data_dir = Path(os.environ.get("APPDATA", os.path.expanduser("~"))) / "Verifypad"
+    app_data_dir.mkdir(parents=True, exist_ok=True)
+    auth_file = app_data_dir / "config.json"
+    print(auth_file)
+else:
+    auth_file = Path(__file__).parent / "config.json"
 
 def checkForConfig():
     try:
@@ -27,7 +34,7 @@ def setConfig():
         }
         json.dump(config, f, indent=2)
         return config
-    
+
 def setPort(port):
     config = getConfig()
     config["port"] = port
