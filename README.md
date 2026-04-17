@@ -1,3 +1,6 @@
+<img width="420" height="595" alt="Really good zine" src="https://github.com/user-attachments/assets/c25e6422-f377-4141-9c7b-d6e0fb70b0fa" />
+
+
 # Verifypad
 ![image](https://raw.githubusercontent.com/Broseph9972/Verifypad/refs/heads/main/application/icon.ico)
 Simple macropad/Hackpad for [Hack club fallout](https://fallout.hackclub.com/)
