@@ -1,13 +1,16 @@
 :root {
+	--black: #12100E;
+	--dark_khaki: #30321C;
+	--khaki: #4A4B2F;
+	--ebony: #6B654B;
+	--teagreen: #D4DF9E;
 	--text-main: #f6f3e8;
 	--text-sub: #d8d3c7;
 	--text-caption: #bcb5a7;
-	--ink: #111111;
-	--panel: rgba(240, 236, 226, 0.8);
-	--dot-base: #6f7fff;
-	--dot-active: #d22f6a;
 	--shadow: rgba(0, 0, 0, 0.55);
 }
+
+
 
 * {
 	box-sizing: border-box;
@@ -30,6 +33,25 @@ body {
 	position: relative;
 	min-height: 100vh;
 	overflow: hidden;
+}
+
+.github-link {
+	position: absolute;
+	top: clamp(1rem, 3vh, 2rem);
+	right: clamp(1rem, 3vw, 2rem);
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	color: var(--text-main);
+	transition: all 0.3s ease;
+}
+
+.github-link:hover {
+	transform: scale(1.1);
+	color: var(--teagreen);
 }
 
 .hero-photo,
@@ -80,10 +102,27 @@ h1 {
 	color: var(--text-caption);
 }
 
+.model-viewer-container {
+	position: absolute;
+	left: 60%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: clamp(400px, 70vw, 900px);
+	height: clamp(500px, 80vh, 900px);
+	z-index: 3;
+}
+
+model-viewer {
+	width: 100%;
+	height: 100%;
+	--poster-color: transparent;
+	border-radius: 16px;
+}
+
 .showcase {
 	position: relative;
 	min-height: 130vh;
-	background: radial-gradient(circle at 20% 18%, #202845 0%, #131726 40%, #0c0f18 100%);
+	background: transparent;
 	overflow: hidden;
 }
 
