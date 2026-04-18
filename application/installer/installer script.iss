@@ -71,7 +71,7 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Run]
 Filename: "{app}\verifypad\{#MyAppExeName}"; Parameters: "--background"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 Filename: "powershell.exe"; \
-    Parameters: "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""$action = New-ScheduledTaskAction -Execute '{app}\verifypad\verifypad.exe --background'; $trigger = New-ScheduledTaskTrigger -AtLogOn; $settings = New-ScheduledTaskSettingsSet -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1); Register-ScheduledTask -TaskName 'VerifyPad' -Action $action -Trigger $trigger -Settings $settings -Force"""; \
+    Parameters: "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""$action = New-ScheduledTaskAction -Execute '{app}\verifypad\verifypad.exe' -Argument '--background'; $trigger = New-ScheduledTaskTrigger -AtLogOn; $settings = New-ScheduledTaskSettingsSet -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1); Register-ScheduledTask -TaskName 'VerifyPad' -Action $action -Trigger $trigger -Settings $settings -Force"""; \
     Flags: runhidden; Check: IsTaskSelected('envPath')
 
 [UninstallRun]
@@ -86,8 +86,21 @@ begin
     then EnvAddPath(ExpandConstant('{app}') + '\verifypad');
 end;
 
+procedure KillVerifyPadBeforeUninstall;
+var
+    ResultCode: Integer;
+begin
+    { Stop app process so uninstall can remove binaries without file lock errors }
+    if Exec(ExpandConstant('{sys}\taskkill.exe'), '/F /T /IM {#MyAppExeName}', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+    then Log(Format('taskkill exited with code %d while stopping {#MyAppExeName}', [ResultCode]))
+    else Log('Unable to start taskkill before uninstall. Continuing.');
+end;
+
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 begin
+    if CurUninstallStep = usUninstall
+    then KillVerifyPadBeforeUninstall;
+
     if CurUninstallStep = usPostUninstall
     then EnvRemovePath(ExpandConstant('{app}') + '\verifypad');
 end;
