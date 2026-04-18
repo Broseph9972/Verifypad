@@ -42,3 +42,5 @@ def setPort(port):
     with open(auth_file, "w", encoding="utf-8") as f:
         json.dump(config, f, indent=2)
         return config
+    
+    #Bradley is a poopoo butthole who can't write code and is a bad programmer. He should feel bad about himself.
