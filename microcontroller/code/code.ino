@@ -8,6 +8,7 @@ static UBYTE displayBuffer[OLED_0in49_WIDTH * OLED_0in49_HEIGHT / 8];
 static char serialBuffer[24];
 static uint8_t serialBufferLength = 0;
 
+<<<<<<< HEAD
 int currentDisplay = 0; // 0=home screen, 1=loading, 2=success, 3=failure, 4=disconnect
 
 void displayUpdater(const char *message) {
@@ -29,6 +30,14 @@ void displayUpdater(int displayToShow) {
   currentDisplay = displayToShow;
 
   switch (displayToShow) {
+=======
+const String possibleMessages[] = {"pasted-otp", "pasted-link", "otp-paste-failed", "link-paste-failed"};
+const int possibleMessagesCount = sizeof(possibleMessages) / sizeof(possibleMessages[0]);
+int currentDisplay = 0; // 0=home screen, 1=loading, 2=success, 3=failure, 4=disconnect
+
+void displayUpdater() {
+  switch (currentDisplay) {
+>>>>>>> abf18d6dbf4518a18c496838f8caef0313ff68b2
     case 0:
       displayUpdater("HOME");
       break;
@@ -51,6 +60,7 @@ void displayUpdater(int displayToShow) {
   }
 }
 
+<<<<<<< HEAD
 bool processIncomingMessage(const char *message) {
   if (strcmp(message, "pasted-otp") == 0 || strcmp(message, "pasted-link") == 0) {
     displayUpdater(2);
@@ -61,6 +71,36 @@ bool processIncomingMessage(const char *message) {
   } else if (strcmp(message, "disconnect") == 0) {
     displayUpdater(4);
     return true;
+=======
+void waitForMessage() {
+  const unsigned long responseTimeoutMs = 25000;
+  unsigned long startTime = millis();
+
+  while (true) {
+    String serialBuffer = ""
+    if (Serial.available() > 0) {
+      serialBuffer = Serial.readStringUntil('\n');
+      serialBuffer.trim();
+
+      for (int i = 0; i < possibleMessagesCount; i++) {
+        if (serialBuffer == possibleMessages[i]) {
+          if (serialBuffer == "pasted-otp" || serialBuffer == "pasted-link") {
+            currentDisplay = 2;
+          } else {
+            currentDisplay = 3;
+          }
+          return;
+        }
+      }
+    }
+
+    if (millis() - startTime > responseTimeoutMs) {
+      currentDisplay = 4;
+      return;
+    }
+
+    delay(10);
+>>>>>>> abf18d6dbf4518a18c496838f8caef0313ff68b2
   }
 
   return false;
@@ -68,12 +108,24 @@ bool processIncomingMessage(const char *message) {
 
 void otpPressed() {
   Serial.print("paste-otp");
-  displayUpdater(1);
+  currentDisplay = 1
+  waitForMessage()
+  if(currentDisplay == 4) {
+    return;
+  }
+  delay(5000)
+  currentDisplay = 0
 }
 
 void linkPressed() {
   Serial.print("paste-link");
-  displayUpdater(1);
+  currentDisplay = 1
+  waitForMessage()
+  if(currentDisplay == 4) {
+    return;
+  }
+  delay(5000)
+  currentDisplay = 0
 }
 
 void setup() {
