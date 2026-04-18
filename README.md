@@ -5,7 +5,7 @@
 ![image](https://raw.githubusercontent.com/Broseph9972/Verifypad/refs/heads/main/application/icon.ico)
 Simple macropad/Hackpad for [Hack club fallout](https://fallout.hackclub.com/)
 
-It uses a simple desktop app to check your email every (brad put that number here later) seconds and check for OTP codes. pressing the key will paste it. i will probably reprogram this later to play geometry dash.
+It uses a simple desktop app to check your email every 3 seconds and check for OTP codes. pressing the key will paste it. ~~i will probably reprogram this later to play geometry dash.~~ no you will not
 ## Bill of Materials (BOM)
 
 | Id | Designator               | Footprint | Quantity | Description | Supplier and Ref | Price |
