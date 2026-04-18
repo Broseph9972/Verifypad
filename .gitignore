@@ -4,3 +4,4 @@ application/venv/
 application/build/
 application/dist/
 application/verifypad.spec
+application/main.spec
