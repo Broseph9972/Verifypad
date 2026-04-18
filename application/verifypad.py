@@ -21,7 +21,7 @@ def messageHandler(msg):
                 paste.pasteText(codes[0])
                 serialcomunication.sendMessage("pasted-otp")
                 print("OTP Succesfully pasted: " + codes[0])
-                break;
+                return
             print(f"Attemp {retry} of 5 failed. Will retry in 3 seconds.")
             retry = retry + 1
             if retry > 5:
@@ -41,7 +41,7 @@ def messageHandler(msg):
                 paste.pasteText(links[0])
                 serialcomunication.sendMessage("pasted-link")
                 print("OTP Succesfully pasted: " + links[0])
-                break;
+                return
             print(f"Attemp {retry} of 5 failed. Will retry in 3 seconds.")
             time.sleep(3)
             print("Reached maximum amount of attempts. Cancelling the paste attempt.")
