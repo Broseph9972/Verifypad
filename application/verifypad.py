@@ -4,6 +4,9 @@ import emailgetter
 import paste
 import time
 import sys
+import subprocess
+import os
+
 serialOpen = False
 configDict = {}
 
@@ -71,6 +74,23 @@ def initializeEmailScraper():
     emailgetter.init(configDict)
     print("Email Scraper Initialized")
 
+def attemptRestartInBackground():
+    if "--background" not in sys.argv and "--no-background" not in sys.argv:
+        if getattr(sys, 'frozen', False):
+            # Running as PyInstaller EXE
+            cmd = [sys.executable, "--background"]
+        else:
+            # Running as .py script
+            cmd = [sys.executable, os.path.abspath(__file__), "--background"]
+
+        subprocess.Popen(
+            cmd,
+            creationflags=subprocess.CREATE_NO_WINDOW
+        )
+        print("Program has been re-launched in the background. Exiting.")
+        sys.exit()
+    print("Failed to re-launch in background, program will continue running normally.")
+
 def main():
     #Command Line Arguments
     if len(sys.argv) > 1 and sys.argv[1] == "help":
@@ -96,6 +116,7 @@ def main():
 
     
     loadConfig()
+    attemptRestartInBackground()
     initializeEmailScraper()
     WaitForSerialConnection()
     serialcomunication.start_monitoring()
