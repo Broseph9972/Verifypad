@@ -69,9 +69,9 @@ Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\verifypad\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\verifypad\{#MyAppExeName}"; Parameters: "--background"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 Filename: "powershell.exe"; \
-    Parameters: "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""$action = New-ScheduledTaskAction -Execute '{app}\verifypad\verifypad.exe'; $trigger = New-ScheduledTaskTrigger -AtLogOn; $settings = New-ScheduledTaskSettingsSet -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1); Register-ScheduledTask -TaskName 'VerifyPad' -Action $action -Trigger $trigger -Settings $settings -Force"""; \
+    Parameters: "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""$action = New-ScheduledTaskAction -Execute '{app}\verifypad\verifypad.exe --background'; $trigger = New-ScheduledTaskTrigger -AtLogOn; $settings = New-ScheduledTaskSettingsSet -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1); Register-ScheduledTask -TaskName 'VerifyPad' -Action $action -Trigger $trigger -Settings $settings -Force"""; \
     Flags: runhidden; Check: IsTaskSelected('envPath')
 
 [UninstallRun]

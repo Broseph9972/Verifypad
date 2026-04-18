@@ -6,6 +6,7 @@ import time
 import sys
 import subprocess
 import os
+import art
 
 serialOpen = False
 configDict = {}
@@ -75,13 +76,13 @@ def initializeEmailScraper():
     print("Email Scraper Initialized")
 
 def attemptRestartInBackground():
-    if "--background" not in sys.argv and "--no-background" not in sys.argv:
+    if "--background" in sys.argv:
         if getattr(sys, 'frozen', False):
             # Running as PyInstaller EXE
-            cmd = [sys.executable, "--background"]
+            cmd = [sys.executable]
         else:
             # Running as .py script
-            cmd = [sys.executable, os.path.abspath(__file__), "--background"]
+            cmd = [sys.executable, os.path.abspath(__file__)]
 
         subprocess.Popen(
             cmd,
@@ -114,6 +115,7 @@ def main():
         print("Config has been updated.")
         sys.exit()
 
+    print(art.text2art("VerifyPad"))
     
     loadConfig()
     attemptRestartInBackground()
