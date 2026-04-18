@@ -25,15 +25,16 @@ def getConfig():
     with open(auth_file, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def setConfig():
+def setConfig(configData=None):
     with open(auth_file, "w", encoding="utf-8") as f:
-        config = {
-            "email": input(f"Email to use for IMAP: "),
-            "password": input(f"Password to use for IMAP: "),
-            "port": input(f"Serial Comunication Port to use: ")
-        }
-        json.dump(config, f, indent=2)
-        return config
+        if configData is None:
+            configData = {
+                "email": input(f"Email to use for IMAP: "),
+                "password": input(f"Password to use for IMAP: "),
+                "port": input(f"Serial Comunication Port to use: ")
+            }
+        json.dump(configData, f, indent=2)
+        return configData
 
 def setPort(port):
     config = getConfig()

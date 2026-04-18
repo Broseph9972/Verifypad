@@ -66,7 +66,7 @@ def WaitForSerialConnection():
 
 def loadConfig():
     global configDict
-    configDict = config.getConfig() if config.checkForConfig() else config.setConfig()
+    configDict = config.getConfig()
     print("Config Loaded")
 
 def initializeEmailScraper():
@@ -89,6 +89,105 @@ def runGui():
 
     container = tk.Frame(root, bg="#11131a")
     container.pack(fill="both", expand=True)
+
+    content = tk.Frame(container, bg="#11131a")
+    content.pack(fill="both", expand=True, padx=28, pady=22)
+
+    status_label = tk.Label(
+        content,
+        text="",
+        bg="#11131a",
+        fg="#f3f6ff",
+        anchor="w",
+        justify="left",
+        font=("JetBrains Mono", 10)
+    )
+    status_label.pack(fill="x")
+
+    worker_started = {"value": False}
+
+    def start_backend_worker():
+        if worker_started["value"]:
+            return
+        worker_started["value"] = True
+        status_label.config(text="Starting VerifyPad services...")
+        worker = threading.Thread(
+            target=lambda: (loadConfig(), initializeEmailScraper(), WaitForSerialConnection(), serialcomunication.start_monitoring()),
+            daemon=True
+        )
+        worker.start()
+
+    def add_labeled_entry(parent, label, is_password=False):
+        row = tk.Frame(parent, bg="#11131a")
+        row.pack(fill="x", pady=6)
+        tk.Label(
+            row,
+            text=label,
+            bg="#11131a",
+            fg="#cfd6ef",
+            font=("JetBrains Mono", 10)
+        ).pack(anchor="w")
+        entry = tk.Entry(
+            row,
+            bg="#1b2130",
+            fg="#f3f6ff",
+            insertbackground="#f3f6ff",
+            relief="flat",
+            font=("JetBrains Mono", 10),
+            show="*" if is_password else ""
+        )
+        entry.pack(fill="x", ipady=7)
+        return entry
+
+    if not config.checkForConfig():
+        status_label.config(text="Set up VerifyPad to continue.")
+
+        form = tk.Frame(content, bg="#11131a")
+        form.pack(fill="x", pady=(14, 0))
+
+        email_entry = add_labeled_entry(form, "Email")
+        password_entry = add_labeled_entry(form, "Password", is_password=True)
+        port_entry = add_labeled_entry(form, "Serial Port (for example COM3)")
+
+        def save_config_and_start():
+            email = email_entry.get().strip()
+            password = password_entry.get().strip()
+            port = port_entry.get().strip()
+
+            if not email or not password or not port:
+                status_label.config(text="Please fill in Email, Password, and Serial Port.", fg="#ff8080")
+                return
+
+            config.setConfig({
+                "email": email,
+                "password": password,
+                "port": port
+            })
+            status_label.config(text="Config saved. Starting services...", fg="#8ff0a4")
+            save_button.config(state="disabled")
+            email_entry.config(state="disabled")
+            password_entry.config(state="disabled")
+            port_entry.config(state="disabled")
+            start_backend_worker()
+
+        save_button = tk.Button(
+            content,
+            text="Save and Start",
+            command=save_config_and_start,
+            bg="#33415f",
+            fg="#f3f6ff",
+            activebackground="#42557c",
+            activeforeground="#ffffff",
+            relief="flat",
+            bd=0,
+            padx=18,
+            pady=9,
+            font=("JetBrains Mono", 10, "bold")
+        )
+        save_button.pack(anchor="w", pady=12)
+    else:
+        status_label.config(text="Config found. Starting VerifyPad services...")
+        start_backend_worker()
 
     quit_button = tk.Button(
         container,
@@ -120,8 +219,7 @@ def main():
 """)
         sys.exit()
     if len(sys.argv) > 1 and sys.argv[1] == "config":
-        config.setConfig()
-        print("Config has been updated.")
+        print("Use the desktop GUI to set Email, Password, and Serial Port.")
         sys.exit()
     if len(sys.argv) > 1 and sys.argv[1] == "setport":
         if(len(sys.argv) != 3):
@@ -131,12 +229,6 @@ def main():
         print("Config has been updated.")
         sys.exit()
 
-    
-    worker = threading.Thread(
-        target=lambda: (loadConfig(), initializeEmailScraper(), WaitForSerialConnection(), serialcomunication.start_monitoring()),
-        daemon=True
-    )
-    worker.start()
     runGui()
     serialcomunication.closeConnection()
 
