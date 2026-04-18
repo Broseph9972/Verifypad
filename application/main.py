@@ -6,6 +6,7 @@ import time
 import sys
 import threading
 import tkinter as tk
+from pathlib import Path
 serialOpen = False
 configDict = {}
 
@@ -77,6 +78,11 @@ def initializeEmailScraper():
 def runGui():
     root = tk.Tk()
     root.title("VerifyPad")
+    icon_path = Path(__file__).with_name("icon.ico")
+    try:
+        root.iconbitmap(default=str(icon_path))
+    except tk.TclError:
+        print(f"Failed to load window icon: {icon_path}")
     root.geometry("680x420")
     root.minsize(460, 280)
     root.configure(bg="#11131a")
