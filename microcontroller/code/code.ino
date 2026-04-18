@@ -1,5 +1,5 @@
-const int I2CD = D6;
-const int I2CC = D7;
+const int SDA = D5;
+const int SCL = D6;
 
 void setup() {
   // put your setup code here, to run once:
