@@ -3,7 +3,7 @@
 ; Non-commercial use only
 
 #define MyAppName "VerifyPad"
-#define MyAppVersion "1.1"
+#define MyAppVersion "1.2"
 #define MyAppPublisher "Joe and Brad inc."
 #define MyAppURL "https://github.com/Broseph9972/Verifypad"
 #define MyAppExeName "verifypad.exe"
@@ -40,7 +40,7 @@ DisableProgramGroupPage=yes
 LicenseFile=C:\Users\Bradley\Coding\Verifypad\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
-PrivilegesRequiredOverridesAllowed=dialog
+PrivilegesRequiredOverridesAllowed=commandline
 OutputBaseFilename=verifypad-{#MyAppVersion}-installer
 SetupIconFile=C:\Users\Bradley\Coding\Verifypad\application\icon.ico
 SolidCompression=yes
@@ -52,6 +52,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "envPath"; Description: "Add to PATH variable" 
+Name: "task"; Description: "Create a system task to run VerifyPad on login" 
 
 [Files]
 Source: "C:\Users\Bradley\Coding\Verifypad\application\dist\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
@@ -68,10 +69,10 @@ Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\main\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\verifypad\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 Filename: "powershell.exe"; \
-    Parameters: "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""$action = New-ScheduledTaskAction -Execute '{app}\main\verifypad.exe'; $trigger = New-ScheduledTaskTrigger -AtLogOn; $settings = New-ScheduledTaskSettingsSet -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1); Register-ScheduledTask -TaskName 'VerifyPad' -Action $action -Trigger $trigger -Settings $settings -Force"""; \
-    Flags: runhidden
+    Parameters: "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""$action = New-ScheduledTaskAction -Execute '{app}\verifypad\verifypad.exe'; $trigger = New-ScheduledTaskTrigger -AtLogOn; $settings = New-ScheduledTaskSettingsSet -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1); Register-ScheduledTask -TaskName 'VerifyPad' -Action $action -Trigger $trigger -Settings $settings -Force"""; \
+    Flags: runhidden; Check: IsTaskSelected('envPath')
 
 [UninstallRun]
 Filename: "powershell.exe"; \
@@ -82,11 +83,11 @@ Filename: "powershell.exe"; \
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
     if (CurStep = ssPostInstall) and IsTaskSelected('envPath')
-    then EnvAddPath(ExpandConstant('{app}') + '\main\verifypad.exe');
+    then EnvAddPath(ExpandConstant('{app}') + '\verifypad');
 end;
 
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 begin
     if CurUninstallStep = usPostUninstall
-    then EnvRemovePath(ExpandConstant('{app}') + '\main\verifypad.exe');
+    then EnvRemovePath(ExpandConstant('{app}') + '\verifypad');
 end;
