@@ -7,12 +7,18 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet" />
+	<link rel="icon" type="image/x-icon" href="./favicon.ico" />
 	<link rel="stylesheet" href="./main.css" />
 	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-</head>
+	</head>
 <body>
 	<main>
 		<section class="hero" aria-label="VerifyPad intro">
+			<a href="https://github.com/broseph9972/VerifyPad" class="github-link" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer">
+				<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+				</svg>
+			</a>
 			<div class="hero-photo"></div>
 			<div class="hero-overlay"></div>
 			<div class="content">
@@ -20,45 +26,17 @@
 				<p class="subtitle">by joe and brad</p>
 				<p class="caption">We're really proud of that name</p>
 			</div>
-		</section>
-
-		<section class="showcase" aria-label="3d showcase">
-			<div id="dot-grid-root" class="dot-grid-host" aria-hidden="true"></div>
-			<div class="showcase-inner">
-				<article class="info info-left">
-					<h2>What It Is</h2>
-					<p>
-						A macropad that talks to a desktop app over serial so one button can fetch and paste verification data.
-					</p>
-				</article>
-
-				<div class="render-wrap">
-					<model-viewer
-						src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-						alt="Temporary 3D model placeholder"
-						camera-controls
-						auto-rotate
-						shadow-intensity="1"
-						exposure="0.95"
-						interaction-prompt="auto"
-					></model-viewer>
-				</div>
-
-				<article class="info info-right">
-					<h2>How It Works</h2>
-					<p>
-						Buttons send UTF-8 commands like paste-otp and paste-link; the app replies with pasted/failure statuses after email checks.
-					</p>
-				</article>
+			<div class="model-viewer-container">
+				<model-viewer
+					src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+					alt="3D Model"
+					camera-controls
+					auto-rotate
+					shadow-intensity="1"
+					exposure="0.95"
+				></model-viewer>
 			</div>
 		</section>
 	</main>
-
-	<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-	<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-	<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-	<script src="https://unpkg.com/gsap@3/dist/InertiaPlugin.min.js"></script>
-	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-	<script type="text/babel" data-presets="react" src="./index.js"></script>
 </body>
 </html>
