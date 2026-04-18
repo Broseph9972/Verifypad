@@ -1,9 +1,9 @@
-const int SDA = D5;
-const int SCL = D6;
+const int SDA_PIN = D5;
+const int SCL_PIN = D6;
 
 void setup() {
-  // put your setup code here, to run once:
-
+  pinMode(SDA_PIN, OUTPUT);
+  digitalWrite(SDA_PIN, HIGH);
 }
 
 void loop() {
