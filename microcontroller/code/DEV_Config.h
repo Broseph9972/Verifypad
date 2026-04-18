@@ -8,9 +8,26 @@
 #ifndef _DEV_CONFIG_H_
 #define _DEV_CONFIG_H_
 
+#include <Arduino.h>
 #include <SPI.h>
 #include <Wire.h>
 #include <avr/pgmspace.h>
+
+#ifndef D5
+#define D5 14
+#endif
+
+#ifndef D6
+#define D6 12
+#endif
+
+#ifndef OLED_I2C_SDA_PIN
+#define OLED_I2C_SDA_PIN D5
+#endif
+
+#ifndef OLED_I2C_SCL_PIN
+#define OLED_I2C_SCL_PIN D6
+#endif
 /**
  * data
 **/

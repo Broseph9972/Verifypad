@@ -17,7 +17,7 @@ uint8_t System_Init(void)
     Serial.begin(115200);
     Serial.println("USE_I2C");
     Wire.setClock(2000000);
-    Wire.begin();
+  Wire.begin(OLED_I2C_SDA_PIN, OLED_I2C_SCL_PIN);
     return 0;
 }
 
