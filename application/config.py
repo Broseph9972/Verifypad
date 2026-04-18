@@ -29,7 +29,7 @@ def setConfig(configData=None):
     with open(auth_file, "w", encoding="utf-8") as f:
         if configData is None:
             configData = {
-                "email":  =input(f"Email to use for IMAP: "),
+                "email":  input(f"Email to use for IMAP: "),
                 "password": input(f"Password to use for IMAP: "),
                 "port": input(f"Serial Comunication Port to use: ")
             }
