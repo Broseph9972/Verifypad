@@ -8,11 +8,10 @@ Simple macropad/Hackpad for [Hack club fallout](https://fallout.hackclub.com/)
 It uses a simple desktop app to check your email every 3 seconds and check for OTP codes. pressing the key will paste it. ~~i will probably reprogram this later to play geometry dash.~~ no you will not
 ## Bill of Materials (BOM)
 
-| Id | Designator               | Footprint | Quantity | Description | Supplier and Ref | Price |
+| Id | Name                    | Footprint | Quantity | Description | Supplier and Ref | Price |
 |----|-------------------------|-----------|----------|-------------|------------------|-------|
-| 1  | J1                      |           | 1        |             |                  | <$0.50 |
-| 2  | SW1, SW2                |           | 2        |             |                  | <$0.50 |
-| 3  | U1                      |           | 1        |             |                  | $4.99 |
+| 2  | Switches                |           | 2        |             |                  |<$0.50 |
+| 3  | XIAO-RP2040-DIP         |           | 1        |             |                  | $4.99 |
 | 4  | Waveshare 0.49 Display  |           | 1        |             |                  | $5.99 |
 
 ### Estimated Total Cost
