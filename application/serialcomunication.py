@@ -48,6 +48,7 @@ def start_monitoring():
         time.sleep(0.1)
 
 def sendMessage(msg):
+    msg = msg + "\n"
     if conn and conn.is_open:
         conn.write(msg.encode("utf-8"))
         return True
