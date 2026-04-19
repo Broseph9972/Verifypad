@@ -12,6 +12,9 @@ const String possibleMessages[] = {"pasted-otp", "pasted-link", "otp-paste-faile
 const int possibleMessagesCount = sizeof(possibleMessages) / sizeof(possibleMessages[0]);
 int currentDisplay = 0; // 0=home screen, 1=loading, 2=success, 3=failure, 4=disconnect
 
+const int otpPin = D9;
+const int linkPin = D8;
+
 void writeText(const char *text) {
   Paint_Clear(WHITE);
   Paint_DrawString_EN(0, 0, text, &Font12, BLACK, WHITE);
@@ -25,26 +28,44 @@ void writeImage(const unsigned char *image) {
   OLED_0in49_Display(displayBuffer);
 }
 
+void drawLoadingDots() {
+  Paint_Clear(WHITE);
+
+  const int centerX = OLED_0in49_WIDTH / 2;
+  const int centerY = (OLED_0in49_HEIGHT / 2) - 6;
+  const int dotSpacing = 8;
+  const int startX = centerX - dotSpacing;
+
+  unsigned long frame = (millis() / 250) % 6;
+  int dotsOn = (frame < 3) ? (frame + 1) : (5 - frame);
+
+  for (int i = 0; i < 3; i++) {
+    Paint_DrawString_EN(startX + (i * dotSpacing), centerY, (i < dotsOn) ? "." : " ", &Font12, BLACK, WHITE);
+  }
+
+  OLED_0in49_Display(displayBuffer);
+}
+
 void displayUpdater() {
   switch (currentDisplay) {
     case 0:
       writeImage(bitmap_home);
       break;
     case 1:
-      writeText("LOADING");
+      drawLoadingDots();
       break;
     case 2:
-      writeText("SUCCESS");
+      writeImage(bitmap_success);
       break;
     case 3:
-      writeText("FAILED");
+      writeImage(bitmap_error);
       break;
     case 4:
-      writeText("OFFLINE");
+      writeText("DISCONNECTED");
       break;
     default:
       currentDisplay = 0;
-      writeText("HOME");
+      writeImage(bitmap_home);
       break;
   }
 }
@@ -52,6 +73,7 @@ void displayUpdater() {
 void waitForMessage() {
   const unsigned long responseTimeoutMs = 25000;
   unsigned long startTime = millis();
+  unsigned long lastAnimUpdate = 0;
 
   while (true) {
     String serialBuffer = "";
@@ -74,6 +96,11 @@ void waitForMessage() {
     if (millis() - startTime > responseTimeoutMs) {
       currentDisplay = 4;
       return;
+    }
+
+    if (currentDisplay == 1 && millis() - lastAnimUpdate >= 250) {
+      displayUpdater();
+      lastAnimUpdate = millis();
     }
 
     delay(10);
@@ -107,6 +134,8 @@ void linkPressed() {
 }
 
 void setup() {
+  pinMode(linkPin, INPUT);
+  pinMode(otpPin, INPUT);
   OLED_0in49_Init();
   Paint_NewImage(displayBuffer, OLED_0in49_WIDTH, OLED_0in49_HEIGHT, 0, WHITE);
   Paint_SelectImage(displayBuffer);
@@ -115,5 +144,16 @@ void setup() {
 }
 
 void loop() {
-  
+  if(digitalRead(otpPin) == HIGH) {
+    while(digitalRead(otpPin) == HIGH) {
+      delay(50);
+    }
+    otpPressed();
+  }
+  if(digitalRead(linkPin) == HIGH) {
+    while(digitalRead(linkPin) == HIGH) {
+      delay(50);
+    }
+    linkPressed();
+  }
 }

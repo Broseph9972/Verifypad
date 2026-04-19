@@ -649,7 +649,7 @@ void Paint_DrawString_CN(UWORD Xstart, UWORD Ystart, const char * pString, cFONT
     if (*p_text < 0x7F) {                                  //ASCII
       for (Num = 0; Num < font->size ; Num++) {
         if (*p_text == pgm_read_byte(&font->table[Num].index[0])) {
-          const char* ptr = &font->table[Num].matrix[0];
+                    const unsigned char* ptr = &font->table[Num].matrix[0];
 
           for (j = 0; j < font->Height; j++) {
             for (i = 0; i < font->Width; i++) {
@@ -693,7 +693,7 @@ void Paint_DrawString_CN(UWORD Xstart, UWORD Ystart, const char * pString, cFONT
     } else {                                   //中文
       for (Num = 0; Num < font->size ; Num++) {
         if ((*p_text == pgm_read_byte(&font->table[Num].index[0])) && (*(p_text + 1) == pgm_read_byte(&font->table[Num].index[1])) && (*(p_text + 2) == pgm_read_byte(&font->table[Num].index[2]))) {
-          const char* ptr = &(font->table[Num].matrix[0]);
+                    const unsigned char* ptr = &(font->table[Num].matrix[0]);
 
           for (j = 0; j < font->Height; j++) {
             for (i = 0; i < font->Width; i++) {

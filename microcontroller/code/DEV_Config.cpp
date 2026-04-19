@@ -17,7 +17,13 @@ uint8_t System_Init(void)
     Serial.begin(115200);
     Serial.println("USE_I2C");
     Wire.setClock(2000000);
+#if defined(ARDUINO_ARCH_RP2040)
+  Wire.setSDA(OLED_I2C_SDA_PIN);
+  Wire.setSCL(OLED_I2C_SCL_PIN);
+  Wire.begin();
+#else
   Wire.begin(OLED_I2C_SDA_PIN, OLED_I2C_SCL_PIN);
+#endif
     return 0;
 }
 
