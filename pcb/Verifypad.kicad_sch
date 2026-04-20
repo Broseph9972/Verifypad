@@ -1039,7 +1039,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_marbastlib-choc:SW_choc_v1_1u"
+		(property "Footprint" "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB"
 			(at 99.06 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -1275,7 +1275,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_marbastlib-choc:SW_choc_v1_1u"
+		(property "Footprint" "Button_Switch_Keyboard:SW_Cherry_MX_1.00u_PCB"
 			(at 99.06 62.23 0)
 			(hide yes)
 			(show_name no)
