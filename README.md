@@ -19,6 +19,7 @@ we made it by just doing an hour of work each day until everything worked. i mos
 | 2  | XIAO-RP2040-DIP         |           | 1        |             |                  | $4.99 |
 | 3  | Waveshare 0.49 Display  |           | 1        |             |                  | $5.99 |
 | 4  | PCB                     |           | 1        |             |                  | $3.12 |
+| 5  | 3D printed parts        |           | ?        |             |                  | $0.00 |
 Total Cost: ~$16.10
 
 # Design
