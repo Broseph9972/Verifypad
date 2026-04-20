@@ -21,4 +21,5 @@ We made it because it's really annoying that every single time i want to use any
 <img width="1723" height="902" alt="image" src="https://github.com/user-attachments/assets/13fb58f2-9a23-4402-b727-b04b0ce55b7a" />
 This is the PCB so far ^^^^
 
-https://raw.githubusercontent.com/Broseph9972/Verifypad/main/media/assembly.mp4
+[https://raw.githubusercontent.com/Broseph9972/Verifypad/main/media/assembly.mp4
+](https://github.com/user-attachments/assets/6515c9df-35d1-4015-a47c-1bd419035557)
