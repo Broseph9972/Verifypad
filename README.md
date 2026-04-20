@@ -12,15 +12,15 @@ We made it because it's really annoying that every single time I want to use any
 we made it by just doing an hour of work each day until everything worked. i mostly did stuff and brad cleaned up whatever i left hanging around. i still cant code :( i gonna learn tho :)
 # Bill of Materials (BOM)
 
-| Id | Name                    | Footprint | Quantity | Description | Supplier and Ref | Price |
-|----|-------------------------|-----------|----------|-------------|------------------|-------|
-| 1  | Switches                |           | 2        |             |                  |<$0.50 |
-| 1  | Keycaps                 |           | 2        |             |                  |<$0.50 |
-| 2  | XIAO-RP2040-DIP         |           | 1        |             |                  | $4.99 |
-| 3  | Waveshare 0.49 Display  |           | 1        |             |                  | $5.99 |
-| 4  | PCB                     |           | 1        |             |                  | $3.12 |
-| 5  | 3D printed parts        |           | ?        |             |                  | $0.00 |
-Total Cost: ~$16.10
+| Id | Name                   | Quantity | Price  |
+|----|------------------------|----------|--------|
+| 1  | Switches               | 2        | <$0.50 |
+| 2  | Keycaps                | 2        | <$0.50 |
+| 3  | XIAO-RP2040-DIP        | 1        | $4.99  |
+| 4  | Waveshare 0.49 Display | 1        | $5.99  |
+| 5  | PCB                    | 1        | $3.12  |
+| 6  | 3D printed parts       | ?        | $0.00  |
+Total Cost: ~$15.10
 
 # Design
 ### PCB
