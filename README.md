@@ -28,5 +28,7 @@ Total Cost: ~$14.10–$15.10
 
 ### Assembly Video
 
+below is an assembly video for the 3d printed files. you should solder the xiao and switches into their outlined spots, solder the screen on with wires and slot it into the lid, then flash the firmware.
+
 [https://raw.githubusercontent.com/Broseph9972/Verifypad/main/media/assembly.mp4
 ](https://github.com/user-attachments/assets/6515c9df-35d1-4015-a47c-1bd419035557)
