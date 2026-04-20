@@ -20,7 +20,7 @@ we made it by just doing an hour of work each day until everything worked. i mos
 | 4  | Waveshare 0.49 Display | 1        | $5.99  |
 | 5  | PCB                    | 1        | $3.12  |
 | 6  | 3D printed parts       | ?        | $0.00  |
-Total Cost: ~$15.10
+Total Cost: ~$14.10–$15.10
 
 # Design
 ### PCB
