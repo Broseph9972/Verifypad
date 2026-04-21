@@ -35,4 +35,4 @@ below is an assembly video for the 3d printed files. you should solder the xiao 
 
 # Downloading Software
 If you're on windows, use the installer in releases and it will automatically install the program, as well as adding it to path and creating a system task to run it on login.
-If you're on another OS or the installer doesn't work (very likely) you can also clone the repo, go to the application folder, and run main.py.
+If you're on another OS or the installer doesn't work (very likely) you can also clone the repo, go to the application folder, and run verifypad.py.
