@@ -9,7 +9,7 @@ It uses a simple desktop app to check your email every 3 seconds and check for O
 
 We decided to make it to save effort when pasting email codes because it can be very annoying and it's much easier to just press a button and have it done for you. 
 
-we made it by just doing an hour of work each day until everything worked. i did pcb and brad did code and case. i still cant code :( i gonna learn tho :)
+we made it by just doing an hour of work each day until everything worked. joe did pcb and brad did code and case. i still cant code :( i gonna learn tho :)
 # Bill of Materials (BOM)
 
 | Id | Name                   | Quantity | Price  |
