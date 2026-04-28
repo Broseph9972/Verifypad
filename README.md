@@ -10,8 +10,9 @@ It uses a simple desktop app to check your email every 3 seconds and check for O
 We decided to make it to save effort when pasting email codes because it can be very annoying and it's much easier to just press a button and have it done for you. 
 
 we made it by just doing an hour of work each day until everything worked. joe did pcb and brad did code and case. joe still cant code :( he gonna learn tho :)
-#Motivation
-We were motivated to make this project because all the time it takes to open your email for a OTP adds up, and it would be really nice to click a button to get a OTP code.
+
+# Motivation
+We were motivated to make this project because all the time it takes to open your email for a OTP adds up, and it would be really nice to click a button to get an OTP code. Also we got it done really quickly because we both set a 14 day streak goal and didn't want to lose it. Were really exited to put it together!
 
 # Bill of Materials (BOM)
 
