@@ -18,12 +18,12 @@ We were motivated to make this project because all the time it takes to open you
 
 | Id | Name                   | Quantity | Price  |
 |----|------------------------|----------|--------|
-| 1  | Cherry MX Clear - MX1A-C1NW               | 2        | $2.85 each|
-| 2  | SparkFun Accessories Cherry MX Keycap - R2                | 2        |$1.05 each |
-| 3  | XIAO-RP2040-DIP        | 1        | $4.99  |
-| 4  | Waveshare 0.49 Display | 1        | $5.99  |
-| 5  | PCB                    | 1        | $3.12  |
-| 6  | 3D printed parts       | ?        | $0.00  |
+| 1  | [Cherry MX Clear - MX1A-C1NW](https://www.digikey.com/en/products/detail/cherry-americas-llc/MX1A-C1NW/280855)               | 2        | $2.85 each|
+| 2  | [SparkFun Accessories Cherry MX Keycap - R2](https://www.digikey.com/en/products/detail/sparkfun-electronics/15305/10130914)                | 2        |$1.05 each |
+| 3  |[ XIAO-RP2040-DIP](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html)        | 1        | $4.99  |
+| 4  | [Waveshare 0.49 Display](https://www.waveshare.com/0.49inch-oled-module.htm) | 1        | $5.99  |
+| 5  | [PCB](pcb/)                    | 1        | $3.12  |
+| 6  | [3D printed parts](case/)       | ?        | $0.00  |
 Total Cost: $21.90
 
 # Design
