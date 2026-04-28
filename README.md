@@ -18,8 +18,8 @@ We were motivated to make this project because all the time it takes to open you
 
 | Id | Name                   | Quantity | Price  |
 |----|------------------------|----------|--------|
-| 1  | Switches               | 2        | <$0.50 |
-| 2  | Keycaps                | 2        | <$0.50 |
+| 1  | Cherry MX Clear - MX1A-C1NW               | 2        | $5.70|
+| 2  | SparkFun Accessories Cherry MX Keycap - R2                | 2        |$2.10 |
 | 3  | XIAO-RP2040-DIP        | 1        | $4.99  |
 | 4  | Waveshare 0.49 Display | 1        | $5.99  |
 | 5  | PCB                    | 1        | $3.12  |
