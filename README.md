@@ -2,6 +2,9 @@
 # VerifyPad
 <img width="420" height="595" alt="Really good zine" src="https://github.com/user-attachments/assets/c25e6422-f377-4141-9c7b-d6e0fb70b0fa" />
 
+(PDF FORMAT FOR HACK CLUB)[579592197-c25e6422-f377-4141-9c7b-d6e0fb70b0fa.pdf](https://github.com/user-attachments/files/27544661/579592197-c25e6422-f377-4141-9c7b-d6e0fb70b0fa.pdf)
+
+
 # About
 Simple macropad for [Hack club fallout](https://fallout.hackclub.com/)
 
